@@ -1,0 +1,8 @@
+pytorch
+snntorch
+matplotlib
+seaborn
+numpy
+pandas
+os
+gc
