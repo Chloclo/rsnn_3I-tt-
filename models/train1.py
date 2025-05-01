@@ -50,7 +50,8 @@ def train_model16(args):
                     f'data_final/task{taskid}_i{ineuron}_job{job}_epoch{epoch}_batch{i}.pth')
 
 
-# #function to train and save the variables to npz files!
+# train function that integrates firing rate, criticality and synchrony
+# may need updating...
 # def train_model(args):
 #     model, optimizer, dataloader,step_dataloader, criterion, criterium_idx, num_epochs, num_timesteps= args
 #     model.train()
@@ -105,7 +106,11 @@ def train_model16(args):
 #                          targets=targets.detach().numpy())
 
                 
-# #function to train and save the variables to npz files!
+# function that tries to eliminate the clock_like input. 5 distinct dataloaders. First 200 epochs, trains on amplitude,
+# period, and clock-like input. 200-400th epochs, clocklike input vector vlaues are squished closer to zero by 1/5. 
+# assume if clock_like vector was originally [-10, -5, -3, -1, 0, 1, 3, 5, 10], then values become: [-8, -4, -2.2, -4/5, 0 ...]
+# always squished by 1/5 of the original magnitudes. by 1000th epoch, clocklike input becomes
+# [0,0,0,0,0...], the model doesn't learn..
 # #model8 traines on different dataloaders each 200th epoch
 # def train_model8(args):
 #     model, optimizer, dataloader_list,step_dataloader, criterion, criterium_idx, num_epochs, num_timesteps= args
