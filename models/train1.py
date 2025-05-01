@@ -26,7 +26,7 @@ def train_model16(args):
                 # spikes of dimension [25,200,300]
                 spikes = torch.cat((spikes, spike.unsqueeze(0)))
                     
-            loss = criterion(outputs, targets)
+            loss = (outputs, targets)
 
             print("loss:", loss)
             loss.backward()
@@ -47,7 +47,7 @@ def train_model16(args):
                     "inputs":inputs,
                     "outputs":outputs,
                     "targets":targets},
-                    f'data_final/task{taskid}_i{ineuron}_job{job}_epoch{epoch}_batch{i}.pth')
+                    f'data/output/task{taskid}_i{ineuron}_job{job}_epoch{epoch}_batch{i}.pth')
 
 
 # train function that integrates firing rate, criticality and synchrony
