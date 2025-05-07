@@ -13,4 +13,4 @@ torch.save({
 
     f'data/output/task{taskid}_i{ineuron}_job{job}_epoch{epoch}_batch{i}.pth')
 
-** the dimensions mentioned might be slightly off (i.e. instead of 25x3x300, input_weights might be 25x300x3)
+** the dimensions indicated above might be slightly off (i.e. instead of 25x3x300, input_weights might be 25x300x3)

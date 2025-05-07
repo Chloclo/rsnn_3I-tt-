@@ -9,13 +9,13 @@ project_root/
 │   ├── input/           
 |   |   ├── training_data...csv files   # raw training data
 |   |   ├── spike_gen.ipynb             # file to generate raw training data
-|   |   └── Sine_Wave_Dataset/         # functions that create processed training data that is fed to models
-│   ├── output/                         # model output data (in terabytes)
+|   |   └── Sine_Wave_Dataset/         # functions that process the raw input data for training models
+│   ├── output/                        # output (all saved data including model weights, losses, spike rasters... in terabytes)
 ├── models/
 │   ├── rsnn/                   # all RSNN models reside here
-│   └── Custom_Loss/            # custom loss (only task_loss is used; networks don't learn rate etc.)
+│   |── Custom_Loss/            # custom loss classes (only task_loss is used; loss classes with synchrony, firing rate and criticality │   |                               haven't been used.)
 │   └── train1.py               # the training function
-├── scripts/                    # the main scripts that are run! (combinations of task and model variations)
+├── scripts/                    # Scripts that are run! (combinations of task and model variations)
 ├── utils/
 │   ├── rleaky_refractory_period.py     # the LIF model that integrates refractory period (imported in 
 │   |                                   # models)

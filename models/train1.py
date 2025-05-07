@@ -1,5 +1,5 @@
 import torch
-from classes.helper1 import count_spikes, sparsity
+from utils.helper1 import count_spikes
 
 
 #function to train and save the variables to npz files!

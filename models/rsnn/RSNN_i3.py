@@ -1,11 +1,8 @@
 import torch
 import torch.nn as nn
-import snntorch as snn
+from utils.helper1 import conn_mx, hid_mx3I, sparsity
+from utils.rleaky_refractory_period import RLeaky_refractory
 import numpy as np
-
-from classes.rleaky_refractory_period import RLeaky_refractory
-from classes.helper1 import conn_mx, hid_mx3I, sparsity
-
 
 # RSNN class that takes 3 inputs
 class RSNN_i3(nn.Module):

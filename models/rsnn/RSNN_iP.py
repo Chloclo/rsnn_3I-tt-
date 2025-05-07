@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
-import snntorch as snn
-from classes.helper1 import conn_mx, hid_mx_iPV, sparsity
-from classes.rleaky_refractory_period import RLeaky_refractory
+from utils.helper1 import conn_mx, hid_mx_iPV, sparsity
+from utils.rleaky_refractory_period import RLeaky_refractory
 import numpy as np
 
 

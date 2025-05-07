@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
-import snntorch as snn
-from classes.helper1 import conn_mx, hid_mx_iPS, sparsity
-from classes.rleaky_refractory_period import RLeaky_refractory
+from utils.helper1 import conn_mx, hid_mx_iPS, sparsity
+from utils.rleaky_refractory_period import RLeaky_refractory
 import numpy as np
 
 
@@ -131,6 +130,8 @@ class RSNN_iPS(nn.Module):
             # excitatory_sampled_indices is of shape (num_false_pos,2), listing randomly selected indices for columns and rows for updating the matrix
             
             # generating self.excitatory_changes number of lognormal values
+            # there is a torch way for efficient code: torch.tensor.lognormal(mean=mu, std=sigma).float()
+            # but it lacks "size" argument
             new_excitatory_values = torch.from_numpy(np.random.lognormal(mean=mu, sigma=sigma, size=num_false_pos)).float()
             
             #update the recurrent weight data with new randomly created lognormal values
@@ -142,6 +143,7 @@ class RSNN_iPS(nn.Module):
                     inhibitory_zero_indices[1][torch.randint(len(inhibitory_zero_indices[1]), (num_false_neg,))]
                 ], dim=1)
 
+            # there is a torch way for efficient code: torch.tensor.lognormal(mean=mu, std=sigma).float() 
             new_inhibitory_values = -torch.from_numpy(np.random.lognormal(mean=mu, sigma=sigma, size=num_false_neg)).float()
             self.rlif1.recurrent.weight.data[inhibitory_sampled_indices[:, 0], self.num_excitatory + inhibitory_sampled_indices[:, 1]] = new_inhibitory_values
 
